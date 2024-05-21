@@ -13,6 +13,7 @@ public enum Identifiers
     ClientAdress,
     ClientDateOfBirth,
     ClientSignature,
+    ClientEmployment,
 
     IssuerName,
     IssuerID,
