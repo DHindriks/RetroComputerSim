@@ -32,9 +32,16 @@ public class Task
 
 public class TaskGenerator : MonoBehaviour
 {
+    [SerializeField] float TaskInvalidChance;
+
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void GenerateTask()
+    {
+
     }
 }
