@@ -33,6 +33,7 @@ public class Task
 public class TaskGenerator : MonoBehaviour
 {
     [SerializeField] float TaskInvalidChance;
+    Task CurrentTask;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,8 @@ public class TaskGenerator : MonoBehaviour
 
     void GenerateTask()
     {
+        CurrentTask = new Task();
+
 
     }
 }
