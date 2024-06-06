@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TaskTypes 
+[System.Serializable]
+public class Task
 {
-    StudentLoanRequest,
+    public bool Isvalid;
+    public MainTaskScriptableObject MTask;
+    public List<ProofScriptableObject> Proofs;
+
 }
 
 public enum Identifiers
@@ -14,6 +18,8 @@ public enum Identifiers
     ClientDateOfBirth,
     ClientSignature,
     ClientEmployment,
+    ClientGuardianIncome,
+    ClientGuardianAdress,
 
     IssuerName,
     IssuerID,
@@ -21,27 +27,12 @@ public enum Identifiers
 
     CertExpiryDate,
 }
-public class MainTask
-{
-    public List<Proof> ReqIdentifiers;
-}
-
-public class Proof
-{
-    public List<Identifiers> ReqIdentifiers;
-}
-
-public class Task
-{
-    public bool Isvalid;
-    public MainTask MTask;
-    public List<Identifiers> ReqIdentifiers;
-
-}
 
 
 public class TaskGenerator : MonoBehaviour
 {
+    [SerializeField] List<MainTaskScriptableObject> PossibleTasks;
+    [SerializeField] List<ProofScriptableObject> PossibleProofs;
     [SerializeField, Range(0, 1)] float TaskInvalidChance;
     Task CurrentTask;
 
@@ -66,6 +57,19 @@ public class TaskGenerator : MonoBehaviour
         }
 
         //decides on the main task
+        CurrentTask.MTask = PossibleTasks[Random.Range(0, PossibleTasks.Count)];
+
+        //Picks proofs
+        if (CurrentTask.Isvalid)
+        {
+            foreach(Identifiers identifier in CurrentTask.MTask.RequiredIdentifiers)
+            {
+                 
+            }
+        }else
+        {
+
+        }
 
 
     }
