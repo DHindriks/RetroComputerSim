@@ -9,9 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe681cafccb7db469ab686c2dc1bfdb, type: 3}
-  m_Name: IsueDiploma
+  m_Script: {fileID: 11500000, guid: 743037e8b5fb9da489390436beafc685, type: 3}
+  m_Name: P_Residence
   m_EditorClassIdentifier: 
-  TaskName: Issue diploma
-  TaskDescription: 
-  RequiredProofs: 000000000400000005000000
+  ProofName: 
+  ProofDescription: 
+  ProofIdentifiers:
+  - identifier: 0
+    value: 
+  - identifier: 1
+    value: 
+  - identifier: 2
+    value: 
+  - identifier: 3
+    value: 

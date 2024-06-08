@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 743037e8b5fb9da489390436beafc685, type: 3}
-  m_Name: Proof of income
+  m_Name: P_GuardianIncome
   m_EditorClassIdentifier: 
   ProofName: 
   ProofDescription: 
-  ProofIdentifiers:
-  - identifier: 0
-    value: 
+  ProofIdentifiers: []

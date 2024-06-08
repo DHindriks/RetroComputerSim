@@ -47,6 +47,17 @@ MonoBehaviour:
   PossibleTasks:
   - {fileID: 11400000, guid: 79c7c65f10c96ac459791783f2c4312c, type: 2}
   - {fileID: 11400000, guid: 3268abe3c6c14fe469d6d6ec1b572216, type: 2}
-  PossibleProofs:
+  IDProofs:
+  - {fileID: 11400000, guid: 5b13cba667a88004cb8979ab56c231f9, type: 2}
+  - {fileID: 11400000, guid: 6699688900bb2b54baebf5751f7de8d4, type: 2}
+  EmploymentProofs:
   - {fileID: 11400000, guid: 58bdb385327eec54d9f13b09588f3d6f, type: 2}
+  IncomeProofs:
+  - {fileID: 11400000, guid: 58bdb385327eec54d9f13b09588f3d6f, type: 2}
+  GuardianIncomeProofs:
+  - {fileID: 11400000, guid: d067bb4cd8c5daa40bf358d599b696db, type: 2}
+  DiplomaProofs:
+  - {fileID: 11400000, guid: 59a92d39449af7546bf77e0e7754999d, type: 2}
+  ResidenceProofs:
+  - {fileID: 11400000, guid: 0cf1ac7e17da04a4cac6aaaae9a98f75, type: 2}
   TaskInvalidChance: 0.45

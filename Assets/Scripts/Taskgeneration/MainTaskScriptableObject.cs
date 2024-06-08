@@ -8,5 +8,5 @@ public class MainTaskScriptableObject : ScriptableObject
 {
     public string TaskName;
     [TextArea(10, 15)]public string TaskDescription;
-    public List<Identifiers> RequiredIdentifiers;
+    public List<ProofTypes> RequiredProofs;
 }
