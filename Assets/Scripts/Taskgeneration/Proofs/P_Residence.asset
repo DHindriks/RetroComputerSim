@@ -16,10 +16,14 @@ MonoBehaviour:
   ProofDescription: 
   ProofIdentifiers:
   - identifier: 0
-    value: 
+    Name: Naam
+    value: Bram Visser
   - identifier: 1
+    Name: Adres
     value: 
   - identifier: 2
+    Name: Geboortedatum
     value: 
   - identifier: 3
+    Name: Handtekening
     value: 

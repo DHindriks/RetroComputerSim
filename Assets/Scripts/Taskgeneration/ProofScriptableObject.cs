@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct ProofIdentifier
+public class ProofIdentifier
 {
     public Identifiers identifier;
+    public string Name;
     public string value;
 }
 
-[CreateAssetMenu(fileName = "Proof", menuName = "Proof", order = 2)]
+[CreateAssetMenu(fileName = "P_Proof", menuName = "Proof", order = 2)]
 public class ProofScriptableObject : ScriptableObject
 {
     public string ProofName;

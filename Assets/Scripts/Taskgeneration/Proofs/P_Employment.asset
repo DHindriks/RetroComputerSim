@@ -16,4 +16,5 @@ MonoBehaviour:
   ProofDescription: 
   ProofIdentifiers:
   - identifier: 0
+    Name: Naam
     value: 

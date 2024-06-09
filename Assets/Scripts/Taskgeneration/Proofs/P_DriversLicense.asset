@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProofName: Drivers license
   ProofDescription: 
-  ProofIdentifiers: []
+  ProofIdentifiers:
+  - identifier: 0
+    Name: Naam
+    value: 
