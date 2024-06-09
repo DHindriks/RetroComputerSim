@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
@@ -49,7 +50,8 @@ public class TaskGenerator : MonoBehaviour
     [SerializeField] GameObject ProofCard;
     [SerializeField] GameObject ProofTitle;
     [SerializeField] GameObject ProofButtons;
-    [SerializeField] GameObject IdentifierCard;
+    [SerializeField] GameObject IdentifierTextCard;
+    [SerializeField] GameObject IdentifierImgCard;
     [SerializeField] List<MainTaskScriptableObject> PossibleTasks;
 
     [SerializeField] List<ProofScriptableObject> IDProofs;
@@ -148,8 +150,16 @@ public class TaskGenerator : MonoBehaviour
                         break;
                 }
 
-                GameObject identifiercard = Instantiate(IdentifierCard, proofcard.transform);
-                identifiercard.GetComponentInChildren<TextMeshProUGUI>().text = CurrentTask.Proofs[i].ProofIdentifiers[j].Name + ": " + CurrentTask.Proofs[i].ProofIdentifiers[j].value;
+                if (CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue != null)
+                {
+                    GameObject identifiercard = Instantiate(IdentifierImgCard, proofcard.transform);
+                    identifiercard.GetComponentInChildren<Image>().sprite = CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue;
+                }
+                else
+                {
+                    GameObject identifiercard = Instantiate(IdentifierTextCard, proofcard.transform);
+                    identifiercard.GetComponentInChildren<TextMeshProUGUI>().text = CurrentTask.Proofs[i].ProofIdentifiers[j].Name + ": " + CurrentTask.Proofs[i].ProofIdentifiers[j].value;
+                }
             }
             GameObject proofbuttons = Instantiate(ProofButtons, proofcard.transform);
         }

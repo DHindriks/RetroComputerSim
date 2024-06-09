@@ -47,7 +47,9 @@ MonoBehaviour:
   WalletContainer: {fileID: 0}
   ProofCard: {fileID: 5842987137318488613, guid: 2cffc92cf6b9e604b840e2cb7ebf3fb2, type: 3}
   ProofTitle: {fileID: 8726868275970061026, guid: 1d295ae1fa05a594899368682bc6b6a1, type: 3}
-  IdentifierCard: {fileID: 8726868275970061026, guid: a1272e445e467be4c94cb75843eceb14, type: 3}
+  ProofButtons: {fileID: 8726868275970061026, guid: 11f76b332c0e0c146be2c746b4fcaa3b, type: 3}
+  IdentifierTextCard: {fileID: 8726868275970061026, guid: a1272e445e467be4c94cb75843eceb14, type: 3}
+  IdentifierImgCard: {fileID: 8726868275970061026, guid: de50b5c1f89c71345b74cbba233f7100, type: 3}
   PossibleTasks:
   - {fileID: 11400000, guid: 79c7c65f10c96ac459791783f2c4312c, type: 2}
   - {fileID: 11400000, guid: 3268abe3c6c14fe469d6d6ec1b572216, type: 2}

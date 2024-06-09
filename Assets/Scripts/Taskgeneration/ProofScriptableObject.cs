@@ -8,6 +8,7 @@ public class ProofIdentifier
     public Identifiers identifier;
     public string Name;
     public string value;
+    public Sprite SpriteValue;
 }
 
 [CreateAssetMenu(fileName = "P_Proof", menuName = "Proof", order = 2)]

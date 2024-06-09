@@ -2285,10 +2285,6 @@ PrefabInstance:
       value: _TaskGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 8428198367472964185, guid: 526c55842f098094586403de945de699, type: 3}
-      propertyPath: ProofButtons
-      value: 
-      objectReference: {fileID: 8726868275970061026, guid: 11f76b332c0e0c146be2c746b4fcaa3b, type: 3}
-    - target: {fileID: 8428198367472964185, guid: 526c55842f098094586403de945de699, type: 3}
       propertyPath: WalletContainer
       value: 
       objectReference: {fileID: 1477399703}
