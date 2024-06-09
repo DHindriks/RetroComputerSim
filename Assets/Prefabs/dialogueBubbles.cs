@@ -12,6 +12,8 @@ namespace ChristinaCreatesGames.Typography.Typewriter
 
 public class dialogueBubbles : MonoBehaviour
 {
+    [SerializeField] GameObject RCBlocker;
+
     public TMP_Text textBox;
     public int currentVisibleCharacterIndex;
     public Coroutine typewriterCoroutine;
@@ -32,12 +34,14 @@ public class dialogueBubbles : MonoBehaviour
 
     public void Awake ()
     {
+        RCBlocker.SetActive(true);
         textBox = GetComponent<TMP_Text>();
 
         simpleDelay = new WaitForSeconds(1 / charactersPerSecond);
         _interpunctuationDelay = new WaitForSeconds(interpunctuationDelay);
 
         skipDelay = new WaitForSeconds(1 / (charactersPerSecond * skipSpeedup));
+
     }
 
     public void Start()
@@ -46,6 +50,7 @@ public class dialogueBubbles : MonoBehaviour
         SetText(textBox.text);
         StartCoroutine(routine:pulamea());
     }
+
 
     public void Update()
     {
@@ -61,8 +66,11 @@ public class dialogueBubbles : MonoBehaviour
                     if (nextObjToAppear != null)
                     {
                         nextObjToAppear.SetActive(true);
+                    }else
+                    {
+                        RCBlocker.SetActive(false);
                     }
-            }
+                }
         }
     }
 

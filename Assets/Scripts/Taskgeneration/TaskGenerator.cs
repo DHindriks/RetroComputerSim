@@ -49,6 +49,8 @@ public enum ProofTypes
 public class TaskGenerator : MonoBehaviour
 {
     [SerializeField] PRMeter prmeter;
+    [SerializeField] GameObject BadRepObj;
+    [SerializeField] GameObject GoodRepobj;
     
     
     [SerializeField] GameObject WalletContainer;
@@ -253,11 +255,13 @@ public class TaskGenerator : MonoBehaviour
             if (proof.Scrambled == true || proof.Overshared == true)
             {
                 prmeter.IncreasePR(-4);
+                BadRepObj.SetActive(true);
                 Debug.Log("You lost, you approved an invalid application");
                 return;
             }
         }
         prmeter.IncreasePR(4);
+        GoodRepobj.SetActive(true);
         Debug.Log("You won, submission approved");
     }
 
@@ -269,10 +273,12 @@ public class TaskGenerator : MonoBehaviour
             {
                 Debug.Log("You won, submission Denied");
                 prmeter.IncreasePR(4);
+                GoodRepobj.SetActive(true);
                 return;
             }
         }
         Debug.Log("You lost, You denied a valid application");
         prmeter.IncreasePR(-4);
+        BadRepObj.SetActive(true);
     }
 }
