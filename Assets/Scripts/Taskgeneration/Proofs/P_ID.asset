@@ -17,13 +17,13 @@ MonoBehaviour:
   ProofIdentifiers:
   - identifier: 0
     Name: Naam
-    value: Bram De Jong
+    value: Daan De Vries
     SpriteValue: {fileID: 0}
   - identifier: 2
-    Name: Handtekening
-    value: 20/7/2009
+    Name: Geboortedatum
+    value: 5/7/1991
     SpriteValue: {fileID: 0}
   - identifier: 3
     Name: Handtekening
     value: 
-    SpriteValue: {fileID: 0}
+    SpriteValue: {fileID: 21300000, guid: 897fc903a827272448f610decd83b58c, type: 3}

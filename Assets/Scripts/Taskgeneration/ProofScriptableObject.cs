@@ -9,6 +9,7 @@ public class ProofIdentifier
     public string Name;
     public string value;
     public Sprite SpriteValue;
+
 }
 
 [CreateAssetMenu(fileName = "P_Proof", menuName = "Proof", order = 2)]
@@ -17,4 +18,6 @@ public class ProofScriptableObject : ScriptableObject
     public string ProofName;
     [TextArea(10, 15)] public string ProofDescription;
     public List<ProofIdentifier> ProofIdentifiers; 
+    [HideInInspector] public bool Scrambled;
+    [HideInInspector] public bool Overshared;
 }

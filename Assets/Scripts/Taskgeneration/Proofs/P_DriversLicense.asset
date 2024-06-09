@@ -17,9 +17,9 @@ MonoBehaviour:
   ProofIdentifiers:
   - identifier: 0
     Name: Naam
-    value: Daan Visser
+    value: Emma Visser
     SpriteValue: {fileID: 0}
   - identifier: 2
-    Name: Naam
-    value: Daan Visser
+    Name: Geboortedatum
+    value: 14/8/1995
     SpriteValue: {fileID: 0}

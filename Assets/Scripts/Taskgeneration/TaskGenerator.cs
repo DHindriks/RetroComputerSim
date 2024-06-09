@@ -49,6 +49,9 @@ public enum ProofTypes
 public class TaskGenerator : MonoBehaviour
 {
     [SerializeField] GameObject WalletContainer;
+    [SerializeField] GameObject JudgedProofWallet;
+    [SerializeField] TextMeshProUGUI MainTaskText;
+    [SerializeField] TextMeshProUGUI ClientText;
     [SerializeField] GameObject ProofCard;
     [SerializeField] GameObject ProofTitle;
     [SerializeField] GameObject ProofButtons;
@@ -66,7 +69,6 @@ public class TaskGenerator : MonoBehaviour
     [SerializeField, Range(0, 1)] float TaskInvalidChance;
     [SerializeField] int InvalidMistakesAmount;
     int CurrentMistakes;
-    bool GenerateMistakeInLoop;
 
     Task CurrentTask;
     [Space(10), Header("Client values")]
@@ -74,6 +76,8 @@ public class TaskGenerator : MonoBehaviour
     [SerializeField] List<string> LastNames;
     [SerializeField] List<string> Adresses;
 
+    [SerializeField] Color ValidColor;
+    [SerializeField] Color InvalidColor;
 
 
 
@@ -97,6 +101,8 @@ public class TaskGenerator : MonoBehaviour
         {
             CurrentTask.Isvalid = true;
         }
+
+        Debug.Log("Task generated as: " + CurrentTask.Isvalid);
 
         //decides on the main task
         CurrentTask.MTask = PossibleTasks[Random.Range(0, PossibleTasks.Count)];
@@ -136,12 +142,19 @@ public class TaskGenerator : MonoBehaviour
         CurrentTask.ClientDateOfBirth = GenerateDateOfBirth();
         CurrentTask.ClientAdress = GenerateAdress();
 
+        MainTaskText.text = "Huidige taak: " + CurrentTask.MTask.name;
+        ClientText.text = "Client: " + CurrentTask.ClientFullName;
+
         //place client data in the proofs, create proof cards in wallet, scramble/remove some data if invalid
         for (int i = 0; i < CurrentTask.Proofs.Count; i++)
         {
             GameObject proofcard = Instantiate(ProofCard, WalletContainer.transform);
             GameObject prooftitle = Instantiate(ProofTitle, proofcard.transform);
             prooftitle.GetComponentInChildren<TextMeshProUGUI>().text = CurrentTask.Proofs[i].ProofName;
+            CurrentTask.Proofs[i].Scrambled = false;
+            CurrentTask.Proofs[i].Overshared = false;
+
+
             for (int j = 0; j < CurrentTask.Proofs[i].ProofIdentifiers.Count; j++)
             {
 
@@ -169,14 +182,18 @@ public class TaskGenerator : MonoBehaviour
                         {
                             case (Identifiers.ClientName):
                                 CurrentTask.Proofs[i].ProofIdentifiers[j].value = CurrentTask.ClientFirstName + " " + ReturnRandomFromList(LastNames);
+                                CurrentTask.Proofs[i].Scrambled = true;
                                 break;
                             case (Identifiers.ClientDateOfBirth):
                                 CurrentTask.Proofs[i].ProofIdentifiers[j].value = GenerateDateOfBirth();
+                                CurrentTask.Proofs[i].Scrambled = true;
                                 break;
                             case (Identifiers.ClientAdress):
                                 CurrentTask.Proofs[i].ProofIdentifiers[j].value = GenerateAdress();
+                                CurrentTask.Proofs[i].Scrambled = true;
                                 break;
                         }
+
                     }
                 }
 
@@ -184,7 +201,7 @@ public class TaskGenerator : MonoBehaviour
                 if (CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue != null)
                 {
                     GameObject identifiercard = Instantiate(IdentifierImgCard, proofcard.transform);
-                    identifiercard.GetComponentInChildren<Image>().sprite = CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue;
+                    identifiercard.transform.GetChild(0).GetComponent<Image>().sprite = CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue;
                 }
                 else
                 {
@@ -193,7 +210,15 @@ public class TaskGenerator : MonoBehaviour
                 }
             }
             GameObject proofbuttons = Instantiate(ProofButtons, proofcard.transform);
-            GenerateMistakeInLoop = false;
+            proofbuttons.GetComponent<ProofValidBtns>().Valid.onClick.AddListener(delegate { 
+                //proofcard.transform.SetParent(JudgedProofWallet.transform); 
+                ChangeImgColor(proofcard.GetComponent<Image>(), ValidColor);
+            });
+
+            proofbuttons.GetComponent<ProofValidBtns>().Invalid.onClick.AddListener(delegate { 
+                //proofcard.transform.SetParent(JudgedProofWallet.transform);
+                ChangeImgColor(proofcard.GetComponent<Image>(), InvalidColor);
+            });
         }
     
     }
@@ -211,5 +236,36 @@ public class TaskGenerator : MonoBehaviour
     string GenerateAdress()
     {
         return ReturnRandomFromList(Adresses) + " " + Random.Range(1, 40);
+    }
+
+    void ChangeImgColor(Image img, Color newclr)
+    {
+        img.color = newclr;
+    }
+
+    public void SubmitApproved()
+    {
+        foreach(ProofScriptableObject proof in CurrentTask.Proofs)
+        {
+            if (proof.Scrambled == true || proof.Overshared == true)
+            {
+                Debug.Log("You lost, you approved an invalid application");
+                return;
+            }
+        }
+        Debug.Log("You won, submission approved");
+    }
+
+    public void SubmitDenied()
+    {
+        foreach (ProofScriptableObject proof in CurrentTask.Proofs)
+        {
+            if (proof.Scrambled == true || proof.Overshared == true)
+            {
+                Debug.Log("You won, submission Denied");
+                return;
+            }
+        }
+        Debug.Log("You lost, You denied a valid application");
     }
 }
