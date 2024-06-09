@@ -13,7 +13,6 @@ namespace ChristinaCreatesGames.Typography.Typewriter
 public class dialogueBubbles : MonoBehaviour
 {
     public TMP_Text textBox;
-    public string testText;
     public int currentVisibleCharacterIndex;
     public Coroutine typewriterCoroutine;
 
@@ -44,7 +43,7 @@ public class dialogueBubbles : MonoBehaviour
     public void Start()
     {
         isSkipped = false;
-        SetText(testText);
+        SetText(textBox.text);
         StartCoroutine(routine:pulamea());
     }
 
