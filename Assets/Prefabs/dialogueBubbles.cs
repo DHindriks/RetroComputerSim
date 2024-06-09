@@ -28,6 +28,8 @@ public class dialogueBubbles : MonoBehaviour
     [SerializeField] private bool quickSkip;
     [SerializeField] [Min(1)] private int skipSpeedup = 5;
     public bool isSkipped;
+    public GameObject objToBeDestroyed;
+    public GameObject nextObjToAppear;
 
     public void Awake ()
     {
@@ -56,7 +58,8 @@ public class dialogueBubbles : MonoBehaviour
             }
 
             if(isSkipped == true){
-                Destroy(gameObject);
+                Destroy(objToBeDestroyed);
+                nextObjToAppear.SetActive(true);
             }
         }
     }
