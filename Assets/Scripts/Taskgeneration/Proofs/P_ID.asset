@@ -17,7 +17,13 @@ MonoBehaviour:
   ProofIdentifiers:
   - identifier: 0
     Name: Naam
-    value: Bram Visser
+    value: Bram De Jong
+    SpriteValue: {fileID: 0}
+  - identifier: 2
+    Name: Handtekening
+    value: 20/7/2009
+    SpriteValue: {fileID: 0}
   - identifier: 3
     Name: Handtekening
     value: 
+    SpriteValue: {fileID: 0}

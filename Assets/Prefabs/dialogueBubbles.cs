@@ -59,7 +59,10 @@ public class dialogueBubbles : MonoBehaviour
 
             if(isSkipped == true){
                 Destroy(objToBeDestroyed);
-                nextObjToAppear.SetActive(true);
+                    if (nextObjToAppear != null)
+                    {
+                        nextObjToAppear.SetActive(true);
+                    }
             }
         }
     }

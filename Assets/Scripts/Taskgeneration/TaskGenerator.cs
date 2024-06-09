@@ -133,8 +133,8 @@ public class TaskGenerator : MonoBehaviour
         CurrentTask.ClientFirstName = ReturnRandomFromList(FirstNames);
         CurrentTask.ClientLastName = ReturnRandomFromList(LastNames);
         CurrentTask.ClientFullName = CurrentTask.ClientFirstName + " " + CurrentTask.ClientLastName;
-        CurrentTask.ClientDateOfBirth = Random.Range(1, 28) + "/" + Random.Range(1, 13) + "/" + Random.Range(1990, 2014);
-        CurrentTask.ClientAdress = ReturnRandomFromList(Adresses) + " " + Random.Range(1, 40);
+        CurrentTask.ClientDateOfBirth = GenerateDateOfBirth();
+        CurrentTask.ClientAdress = GenerateAdress();
 
         //place client data in the proofs, create proof cards in wallet, scramble/remove some data if invalid
         for (int i = 0; i < CurrentTask.Proofs.Count; i++)
@@ -165,11 +165,18 @@ public class TaskGenerator : MonoBehaviour
                     float mistakeRNG = Random.value;
                     if (mistakeRNG < .75f)
                     {
-                        //generate mistake
-                    }
-                    else
-                    {
-                        //generate no mistake
+                        switch (CurrentTask.Proofs[i].ProofIdentifiers[j].identifier)
+                        {
+                            case (Identifiers.ClientName):
+                                CurrentTask.Proofs[i].ProofIdentifiers[j].value = CurrentTask.ClientFirstName + " " + ReturnRandomFromList(LastNames);
+                                break;
+                            case (Identifiers.ClientDateOfBirth):
+                                CurrentTask.Proofs[i].ProofIdentifiers[j].value = GenerateDateOfBirth();
+                                break;
+                            case (Identifiers.ClientAdress):
+                                CurrentTask.Proofs[i].ProofIdentifiers[j].value = GenerateAdress();
+                                break;
+                        }
                     }
                 }
 
@@ -194,5 +201,15 @@ public class TaskGenerator : MonoBehaviour
     string ReturnRandomFromList(List<string> list)
     {
         return list[Random.Range(0, list.Count)];
+    }
+
+    string GenerateDateOfBirth()
+    {
+        return Random.Range(1, 28) + "/" + Random.Range(1, 13) + "/" + Random.Range(1990, 2014);
+    }
+
+    string GenerateAdress()
+    {
+        return ReturnRandomFromList(Adresses) + " " + Random.Range(1, 40);
     }
 }
