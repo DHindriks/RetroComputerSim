@@ -11,7 +11,9 @@ public class Task
     public MainTaskScriptableObject MTask;
     public List<ProofScriptableObject> Proofs;
     public string ClientFullName;
-    public string ClientDateOfBirth = "04/09/2008";
+    public string ClientFirstName;
+    public string ClientLastName;
+    public string ClientDateOfBirth;
     public string ClientAdress;
 
 }
@@ -62,6 +64,10 @@ public class TaskGenerator : MonoBehaviour
     [SerializeField] List<ProofScriptableObject> ResidenceProofs;
 
     [SerializeField, Range(0, 1)] float TaskInvalidChance;
+    [SerializeField] int InvalidMistakesAmount;
+    int CurrentMistakes;
+    bool GenerateMistakeInLoop;
+
     Task CurrentTask;
     [Space(10), Header("Client values")]
     [SerializeField] List<string> FirstNames;
@@ -124,7 +130,9 @@ public class TaskGenerator : MonoBehaviour
         //Overshare?
 
         //Generate Client values
-        CurrentTask.ClientFullName = ReturnRandomFromList(FirstNames) + " " + ReturnRandomFromList(LastNames);
+        CurrentTask.ClientFirstName = ReturnRandomFromList(FirstNames);
+        CurrentTask.ClientLastName = ReturnRandomFromList(LastNames);
+        CurrentTask.ClientFullName = CurrentTask.ClientFirstName + " " + CurrentTask.ClientLastName;
         CurrentTask.ClientDateOfBirth = Random.Range(1, 28) + "/" + Random.Range(1, 13) + "/" + Random.Range(1990, 2014);
         CurrentTask.ClientAdress = ReturnRandomFromList(Adresses) + " " + Random.Range(1, 40);
 
@@ -137,6 +145,7 @@ public class TaskGenerator : MonoBehaviour
             for (int j = 0; j < CurrentTask.Proofs[i].ProofIdentifiers.Count; j++)
             {
 
+                //writes data into the proofs
                 switch(CurrentTask.Proofs[i].ProofIdentifiers[j].identifier)
                 {
                     case (Identifiers.ClientName):
@@ -150,6 +159,21 @@ public class TaskGenerator : MonoBehaviour
                         break;
                 }
 
+                //generates mistakes
+                if (!CurrentTask.Isvalid && CurrentMistakes < InvalidMistakesAmount)
+                {
+                    float mistakeRNG = Random.value;
+                    if (mistakeRNG < .75f)
+                    {
+                        //generate mistake
+                    }
+                    else
+                    {
+                        //generate no mistake
+                    }
+                }
+
+                //generates identifiers in UI
                 if (CurrentTask.Proofs[i].ProofIdentifiers[j].SpriteValue != null)
                 {
                     GameObject identifiercard = Instantiate(IdentifierImgCard, proofcard.transform);
@@ -162,6 +186,7 @@ public class TaskGenerator : MonoBehaviour
                 }
             }
             GameObject proofbuttons = Instantiate(ProofButtons, proofcard.transform);
+            GenerateMistakeInLoop = false;
         }
     
     }

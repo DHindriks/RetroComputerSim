@@ -2288,6 +2288,10 @@ PrefabInstance:
       propertyPath: WalletContainer
       value: 
       objectReference: {fileID: 1477399703}
+    - target: {fileID: 8428198367472964185, guid: 526c55842f098094586403de945de699, type: 3}
+      propertyPath: InvalidMistakesAmount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

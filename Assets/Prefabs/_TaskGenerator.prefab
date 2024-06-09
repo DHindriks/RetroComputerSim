@@ -67,6 +67,7 @@ MonoBehaviour:
   ResidenceProofs:
   - {fileID: 11400000, guid: 0cf1ac7e17da04a4cac6aaaae9a98f75, type: 2}
   TaskInvalidChance: 0.45
+  InvalidMistakesAmount: 5
   FirstNames:
   - Bram
   - Sem
