@@ -186,7 +186,7 @@ public class TaskGenerator : MonoBehaviour
         CurrentTask.ClientDateOfBirth = GenerateDateOfBirth();
         CurrentTask.ClientAdress = GenerateAdress();
 
-        MainTaskText.text = "Huidige taak: " + CurrentTask.MTask.name;
+        MainTaskText.text = "Current task: " + CurrentTask.MTask.name;
         ClientText.text = "Client: " + CurrentTask.ClientFullName;
 
         //place client data in the proofs, create proof cards in wallet, scramble/remove some data if invalid

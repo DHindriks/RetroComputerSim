@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743037e8b5fb9da489390436beafc685, type: 3}
   m_Name: P_Residence
   m_EditorClassIdentifier: 
-  ProofName: Bewijs van adres
+  ProofName: Proof of residence
   ProofDescription: 
   ProofIdentifiers:
   - identifier: 0
