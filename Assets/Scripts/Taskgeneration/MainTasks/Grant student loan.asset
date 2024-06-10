@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebe681cafccb7db469ab686c2dc1bfdb, type: 3}
-  m_Name: IsueDiploma
+  m_Name: Grant student loan
   m_EditorClassIdentifier: 
-  TaskName: Issue diploma
+  TaskName: Student loan request
   TaskDescription: 
-  RequiredProofs: 000000000400000005000000
+  RequiredProofs: 050000000300000004000000
+  OversharedProofs: 01000000

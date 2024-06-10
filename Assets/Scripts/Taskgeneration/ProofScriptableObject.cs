@@ -19,5 +19,6 @@ public class ProofScriptableObject : ScriptableObject
     [TextArea(10, 15)] public string ProofDescription;
     public List<ProofIdentifier> ProofIdentifiers; 
     [HideInInspector] public bool Scrambled;
-    [HideInInspector] public bool Overshared;
+    public bool Overshared;
+    public bool Valid;
 }

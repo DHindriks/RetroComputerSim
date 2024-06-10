@@ -2405,6 +2405,22 @@ PrefabInstance:
       propertyPath: GoodRepobj
       value: 
       objectReference: {fileID: 1894815805}
+    - target: {fileID: 1687276467741718803, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
+      propertyPath: TaskInvalidChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687276467741718803, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
+      propertyPath: PossibleTasks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687276467741718803, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
+      propertyPath: PossibleTasks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3268abe3c6c14fe469d6d6ec1b572216, type: 2}
+    - target: {fileID: 1687276467741718803, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
+      propertyPath: PossibleTasks.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 79c7c65f10c96ac459791783f2c4312c, type: 2}
     - target: {fileID: 1709123426772705430, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -2447,11 +2463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3672724818564586675, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3672724818564586675, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359174652128254871, guid: b1ddd5b387a3f40428672e8471566a8c, type: 3}
       propertyPath: m_Pivot.x

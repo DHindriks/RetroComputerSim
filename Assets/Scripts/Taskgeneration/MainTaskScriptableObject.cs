@@ -9,4 +9,5 @@ public class MainTaskScriptableObject : ScriptableObject
     public string TaskName;
     [TextArea(10, 15)]public string TaskDescription;
     public List<ProofTypes> RequiredProofs;
+    public List<ProofTypes> OversharedProofs;
 }

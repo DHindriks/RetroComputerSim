@@ -139,6 +139,45 @@ public class TaskGenerator : MonoBehaviour
         }
 
         //Overshare?
+        ProofScriptableObject PickedProof;
+        foreach (ProofTypes proof in CurrentTask.MTask.OversharedProofs)
+        {
+            switch (proof)
+            {
+                case ProofTypes.ID:
+                    PickedProof = IDProofs[Random.Range(0, IDProofs.Count)];
+                    PickedProof.Overshared = true;
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+                case ProofTypes.Employment:
+                    PickedProof = EmploymentProofs[Random.Range(0, EmploymentProofs.Count)];
+                    PickedProof.Overshared = true;
+                    Debug.Log("Employment overshared");
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+                case ProofTypes.Income:
+                    PickedProof = IncomeProofs[Random.Range(0, IncomeProofs.Count)];
+                    PickedProof.Overshared = true;
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+                case ProofTypes.GuardianIncome:
+                    PickedProof = GuardianIncomeProofs[Random.Range(0, GuardianIncomeProofs.Count)];
+                    PickedProof.Overshared = true;
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+                case ProofTypes.Diploma:
+                    PickedProof = DiplomaProofs[Random.Range(0, DiplomaProofs.Count)];
+                    PickedProof.Overshared = true;
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+                case ProofTypes.Residence:
+                    PickedProof = ResidenceProofs[Random.Range(0, ResidenceProofs.Count)];
+                    PickedProof.Overshared = true;
+                    CurrentTask.Proofs.Add(PickedProof);
+                    break;
+            }
+        }
+
 
         //Generate Client values
         CurrentTask.ClientFirstName = ReturnRandomFromList(FirstNames);
@@ -154,10 +193,11 @@ public class TaskGenerator : MonoBehaviour
         for (int i = 0; i < CurrentTask.Proofs.Count; i++)
         {
             GameObject proofcard = Instantiate(ProofCard, WalletContainer.transform);
+            proofcard.GetComponent<CredentialScript>().Linkedproof = CurrentTask.Proofs[i];
             GameObject prooftitle = Instantiate(ProofTitle, proofcard.transform);
             prooftitle.GetComponentInChildren<TextMeshProUGUI>().text = CurrentTask.Proofs[i].ProofName;
             CurrentTask.Proofs[i].Scrambled = false;
-            CurrentTask.Proofs[i].Overshared = false;
+            CurrentTask.Proofs[i].Valid = true;
 
 
             for (int j = 0; j < CurrentTask.Proofs[i].ProofIdentifiers.Count; j++)
@@ -215,13 +255,15 @@ public class TaskGenerator : MonoBehaviour
                 }
             }
             GameObject proofbuttons = Instantiate(ProofButtons, proofcard.transform);
-            proofbuttons.GetComponent<ProofValidBtns>().Valid.onClick.AddListener(delegate { 
-                //proofcard.transform.SetParent(JudgedProofWallet.transform); 
+            proofbuttons.GetComponent<ProofValidBtns>().Valid.onClick.AddListener(delegate {
+                //proofcard.transform.SetParent(JudgedProofWallet.transform);
+                proofcard.GetComponent<CredentialScript>().SetValid(true);
                 ChangeImgColor(proofcard.GetComponent<Image>(), ValidColor);
             });
 
             proofbuttons.GetComponent<ProofValidBtns>().Invalid.onClick.AddListener(delegate { 
                 //proofcard.transform.SetParent(JudgedProofWallet.transform);
+                proofcard.GetComponent<CredentialScript>().SetValid(false);
                 ChangeImgColor(proofcard.GetComponent<Image>(), InvalidColor);
             });
         }
@@ -252,7 +294,7 @@ public class TaskGenerator : MonoBehaviour
     {
         foreach(ProofScriptableObject proof in CurrentTask.Proofs)
         {
-            if (proof.Scrambled == true || proof.Overshared == true)
+            if (proof.Scrambled == true || proof.Overshared == true && proof.Valid)
             {
                 prmeter.IncreasePR(-4);
                 BadRepObj.SetActive(true);
