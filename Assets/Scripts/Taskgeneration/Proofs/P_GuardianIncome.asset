@@ -30,7 +30,7 @@ MonoBehaviour:
   - identifier: 3
     Name: 
     value: 
-    SpriteValue: {fileID: 21300000, guid: 897fc903a827272448f610decd83b58c, type: 3}
+    SpriteValue: {fileID: 21300000, guid: 2133c0d4845ef684387300c509d814d2, type: 3}
   - identifier: 10
     Name: 
     value: 
