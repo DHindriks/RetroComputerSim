@@ -16,18 +16,29 @@ MonoBehaviour:
   ProofDescription: 
   ProofIdentifiers:
   - identifier: 0
-    Name: Naam
-    value: Daan jansen
+    Name: Name
+    value: Sophie De Jong
     SpriteValue: {fileID: 0}
   - identifier: 1
-    Name: Adres
-    value: Gasthuislaan 25
+    Name: Adress
+    value: Gasthuislaan 14
     SpriteValue: {fileID: 0}
   - identifier: 2
-    Name: Geboortedatum
-    value: 8/1/1996
+    Name: Date of birth
+    value: 2/1/2013
+    SpriteValue: {fileID: 0}
+  - identifier: 8
+    Name: Issuer ID
+    value: GGIG-2024-NATD
     SpriteValue: {fileID: 0}
   - identifier: 3
-    Name: Handtekening
+    Name: 
     value: 
-    SpriteValue: {fileID: 21300000, guid: 897fc903a827272448f610decd83b58c, type: 3}
+    SpriteValue: {fileID: 21300000, guid: b3a1b65b4963f88409171a34b97073cb, type: 3}
+  - identifier: 10
+    Name: 
+    value: 
+    SpriteValue: {fileID: 21300000, guid: ca0100f585a172841ae160dc4002e64e, type: 3}
+  Scrambled: 0
+  Overshared: 0
+  Valid: 1
