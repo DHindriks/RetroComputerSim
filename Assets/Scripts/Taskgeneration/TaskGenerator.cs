@@ -139,7 +139,6 @@ public class TaskGenerator : MonoBehaviour
                     break;
             }
 
-            //adds proof
 
         }
 
