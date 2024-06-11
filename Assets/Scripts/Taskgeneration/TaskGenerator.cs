@@ -57,6 +57,7 @@ public class TaskGenerator : MonoBehaviour
     [SerializeField] GameObject JudgedProofWallet;
     [SerializeField] TextMeshProUGUI MainTaskText;
     [SerializeField] TextMeshProUGUI ClientText;
+    [SerializeField] TextMeshProUGUI RequiredText;
     [SerializeField] GameObject ProofCard;
     [SerializeField] GameObject ProofTitle;
     [SerializeField] GameObject ProofButtons;
@@ -112,6 +113,7 @@ public class TaskGenerator : MonoBehaviour
         //decides on the main task
         CurrentTask.MTask = PossibleTasks[Random.Range(0, PossibleTasks.Count)];
 
+
         //Picks proofs
         foreach(ProofTypes proof in CurrentTask.MTask.RequiredProofs)
         {
@@ -136,6 +138,9 @@ public class TaskGenerator : MonoBehaviour
                     CurrentTask.Proofs.Add(ResidenceProofs[Random.Range(0, ResidenceProofs.Count)]);
                     break;
             }
+
+            //adds proof
+
         }
 
         //Overshare?
